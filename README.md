@@ -1,7 +1,7 @@
 # Auth example for future use as reusable code repository 
 This repo consist a basic frontend at "/client" and rest is the backend for the auth.
 
-#It consists:
+# It consists:
 1.) Auth path
 2.) Middleware 
 3.) Controllers
