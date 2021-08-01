@@ -1,7 +1,7 @@
+// const crpto = require("crypto");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const crpto = require("crypto");
 
 //** NOTE: Always remember to user function keyword in db instead of "fat arrow function" ** //
 const UserSchema = new mongoose.Schema({
@@ -51,10 +51,10 @@ UserSchema.methods.getSignedToken = function () {
 
 //generating reset token
 UserSchema.methods.getResetPasswordToken = function () {
-    const resetToken = crypto.randomBytes(20).toString("hex");
-
-    this.resetPasswordToken = crpto.createHash("sha256").update(resetToken).digest("hex");
+    const resetToken = require("crypto").randomBytes(20).toString("hex");
+    this.resetPasswordToken = require("crypto").createHash("sha256").update(resetToken).digest("hex");
     this.resetPasswordExpire = Date.now() + 10 * (60 * 1000);
+
     return resetToken;
 }
 const User = mongoose.model("User", UserSchema);
